@@ -3,10 +3,10 @@ import axios from "axios";
 import { Consumer } from "../../context";
 class Search extends Component {
   state = {
-    trackTitle: ""
+    trackTitle: "",
   };
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -20,24 +20,27 @@ class Search extends Component {
           process.env.REACT_APP_MM_KEY
         }`
       )
-      .then(res => {
+      .then((res) => {
         dispatch({
           type: "SEARCH_TRACKS",
-          payload: res.data.message.body.track_list
+          payload: res.data.message.body.track_list,
         });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   render() {
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { dispatch } = value;
           return (
             <div className="card card-body mb-4 p-4">
-              <h1 className="display-4 text-center">
-                <i className="fas fa-music" /> Search For A Song
+              <h1
+                className="display-4 text-center"
+                style={{ color: "#758bae" }}
+              >
+                Search For A Song
               </h1>
               <p className="lead text-center">
                 Or check the top 10 tracks out right now!
